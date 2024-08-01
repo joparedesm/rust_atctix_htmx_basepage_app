@@ -35,3 +35,8 @@ Run cargo watch
 ```bash
     cargo watch -x run
 ```
+
+### HTMX Example Application
+
+[https://github.com/bigskysoftware/contact-app]
+[https://github.com/bigskysoftware/contact-app/blob/master/templates/index.html]
