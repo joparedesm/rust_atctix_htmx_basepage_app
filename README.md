@@ -12,22 +12,7 @@
 Install Cargo watch
 
 ```bash
-    cd
-    mkdir external
-    cd external/
-    git clone --dept=1 https://github.com/watchexex/cargo-watch.git
-    cd cargo-watch/
-    cargo build --release
-    ls target/release/
-    echo $(pwd)/target/release
-    echo export PATH=$PATH:$(pwd)/target/release >> ~/bashrc
-```
-
-Now it should be available in your working directory
-
-```bash
-    # postmodern_htmx_rust
-    source ~/bashrc
+    cargo install cargo-watch
 ```
 
 Run cargo watch
