@@ -6,32 +6,39 @@ use actix_web::{
 use lazy_static::lazy_static;
 use tera::Tera;
 
+const SOURCE: &str = "templates/**/*";
+// * Initialize the Tera template engine
 lazy_static! {
+    // * Create a static reference to the Tera instance
     pub static ref TEMPLATES: Tera = {
-        const source = "templates/**/*";
-        let mut tera = match Tera::new(source) {
-            Ok(t) => t,
-            Err(e) => {
-                println!("Parsing error(s): {}". e);
-                ::std::process::exit(1);
-            }
-        };
-        tera.autoescape_on(vec![".html", ".sql"]);
-        tera.register_filter("do_nothing", do_nothing_filter);
+        let tera = Tera::new(SOURCE).expect("Error parsing templates / initializing Tera");
         tera
     };
 }
 
 #[get("/")]
 async fn index() -> impl Responder {
-    HttpResponse::Ok().body("<h1>This is a tittle</h1><h2>This is a smaller heading</h2><p>And this is a paragraph</p>")
+    // * Create a context to pass to the template
+    let mut context = tera::Context::new();
+    // * Add a key-value pair to the context
+    context.insert("rustacean_message", "Hello from Rust back!!");
+    // * Render the template with the context
+    let page_content = TEMPLATES.render("index.html", &context).unwrap();
+    // * Return the rendered template as the response
+    HttpResponse::Ok().body(page_content)
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
 
-    HttpServer::new(|| { App::new().service(index) })
+    // * Start the server with the following routes/services
+    HttpServer::new(|| {
+            App::new()
+                .service(index)
+        })
         .bind(("127.0.0.1", 9090))?
         .run()
         .await
 }
+
+
