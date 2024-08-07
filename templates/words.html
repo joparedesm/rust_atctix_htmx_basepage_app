@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<p id="english">
+{{ word2 }}
+</p>
+<p id="spanish" style="visibility: hidden;">
+{{ word1 }}
+</p>
+<button onClick="answer()">Respuesta</button>
+<button hx-get="/palabras">Siguiente</button>
+
+<script>
+    function answer() {
+        document.getElementById("spanish").style.visibility = "visible";
+    }
+</script>
+
+{% endblock %}
