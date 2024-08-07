@@ -2,15 +2,12 @@
 
 {% block content %}
 
-
-<p id="english">
-{{ word2 }}
-</p>
-<p id="spanish" style="visibility: hidden;">
-{{ word1 }}
-</p>
+<div id="words-pair">
+    {% include 'pair.html' %}
+</div>
 <button onClick="answer()">Respuesta</button>
-<button hx-get="/palabras">Siguiente</button>
+
+<button hx-get="/par" hx-target="#words-pair">Siguiente</button>
 
 <script>
     function answer() {

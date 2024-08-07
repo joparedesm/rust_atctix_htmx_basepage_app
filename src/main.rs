@@ -75,8 +75,8 @@ async fn main() -> std::io::Result<()> {
                 .service(info)
                 .service(get_words)
                 .service(get_pair)
-                .service(actix_files::Files::new("/assets", "./assets")
-                    .show_files_listing()
+                .service(
+                    actix_files::Files::new("/assets", "./assets")
                 )
         })
         .bind(("127.0.0.1", 9090))?
