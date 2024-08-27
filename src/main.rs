@@ -1,5 +1,6 @@
 mod words;
 mod pairs;
+mod schema;
 
 use actix_files;
 use actix_web::{
