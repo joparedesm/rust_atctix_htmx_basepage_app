@@ -6,6 +6,8 @@
 - HTML templating engine to enable components and HTML code reuse -> [tera](https://keats.github.io/tera/docs/#usage)
 - Basic styling -> [missing.style](https://missing.style/) (HTMX creator)
 - Hotreloading  -> [cargo-watch](https://github.com/watchexec/cargo-watch)
+- Postgres -> [Create User](https://phoenixnap.com/kb/postgres-create-user)
+- ORM Crate -> [Diesel](https://diesel.rs/guides/ng-started)
 
 ### Cargo Watch
 
