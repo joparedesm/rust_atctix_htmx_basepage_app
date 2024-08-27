@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use rand::Rng;
 use crate::pairs::Pair;
 
-#[derive(Serialize, Deserialize, Debug,Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Word {
     pub words: Vec<Pair>
 }
@@ -13,7 +13,7 @@ static WORDS: &str = include_str!("../assets/words.json");
 impl Word {
     // * Function to get all the words
     pub fn get_words() -> Word {
-        // * Deserialize the JSON string into a Word struct
+        // * Deserialize the JSON string into a Word struct by adding the id field
         let words: Word = serde_json::from_str(WORDS).unwrap();
         words
     }
